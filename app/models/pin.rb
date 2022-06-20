@@ -1,6 +1,3 @@
-class Pin < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+class Pin < ActiveRecord::Base
+  belongs_to :user
 end
