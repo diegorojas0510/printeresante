@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>Pinteresante</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
@@ -9,38 +9,46 @@
     <%#= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%#= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-  </head>
+</head>
 
-  <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Printeresante</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <% if signed_in? %>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" <%= link_to "Salir", destroy_user_session_path %></li>
-        <% else %>
-        <!--Path que da divise para poder hacer el registro del usuario-->
-        <li class="nav-item"><a class="nav-link active" aria-current="page" <%= link_to "Registrarse", new_user_registration_path %></li>
-        <!--Path que da divise para poder iniciar la sesion del usuario-->
-        <li class="nav-item"> <a class="nav-link active" aria-current="page" <%= link_to "Ingresar", new_user_session_path %></li>
-        <% end %>
-      </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Printeresante</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+              <!-- Si la sesion esta iniciada entonces se crea un link para salir(destruir la sesión)-->
+                <% if signed_in? %>
+                <li class="nav-item">
+                  <!-- para destruir la sesión-->
+                    <a class="nav-link active" aria-current="page" <%= link_to "Salir", destroy_user_session_path %>
+                </li>
+                <% else %>
+                <!--Path que da divise para poder hacer el registro del usuario-->
+                <li class="nav-item"><a class="nav-link active"
+                                        aria-current="page" <%= link_to "Registrarse", new_user_registration_path %>
+                </li>
+                <!--Path que da divise para poder iniciar la sesion del usuario-->
+                <li class="nav-item"><a class="nav-link active"
+                                        aria-current="page" <%= link_to "Ingresar", new_user_session_path %></li>
+                <% end %>
+            </ul>
+          <!-- Formulario para busqueda-->
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
     </div>
-  </div>
 </nav>
 <%= yield %>
 
-  </body>
+</body>
 </html>

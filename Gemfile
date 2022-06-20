@@ -47,7 +47,7 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 
 #bootstrap 5
-gem "bootstrap", "~> 5.0"
+# gem "bootstrap", "~> 5.0"
 
 # Bootstrap sass
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
