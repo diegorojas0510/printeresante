@@ -12,13 +12,6 @@
   </head>
 
   <body>
-<!--  <div class="container">-->
-<!--    <div class="row">-->
-<!--      <div class="col">-->
-
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Printeresante</a>
@@ -30,6 +23,15 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
+        <% if signed_in? %>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" <%= link_to "Salir", destroy_user_session_path %></li>
+        <% else %>
+        <!--Path que da divise para poder hacer el registro del usuario-->
+        <li class="nav-item"><a class="nav-link active" aria-current="page" <%= link_to "Registrarse", new_user_registration_path %></li>
+        <!--Path que da divise para poder iniciar la sesion del usuario-->
+        <li class="nav-item"> <a class="nav-link active" aria-current="page" <%= link_to "Ingresar", new_user_session_path %></li>
+        <% end %>
       </ul>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
