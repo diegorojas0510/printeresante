@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
-  devise_for :pins
   root "pins#index"
   resources :pins
+  # get "pins/new", to: "pins#delete"
+  # # devise_for :users
   devise_for :users
-
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "application#home"
+  resources :users
+  # get "users/:id", to: "users#delete", as: "delete_user"
+  # get "pins/new", to: "pins#new"
+  # get "pins/:id", to: "pins#show", as: "show_pin"
+  # get "pins/:id/edit", to: "pins#edit", as: "edit_pin"
+  #
+  # post "pins/", to: "pins#create"
+  # patch "pins/:id", to: "pins#update", as: "pin"
+  # delete "pins/:id", to: "pins#destroy", as: "delete_pin"
 end

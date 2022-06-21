@@ -1,4 +1,6 @@
 class PinsController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
+
   #metodo para listar todos los pins
   def index
     @pins = Pin.all
@@ -7,6 +9,12 @@ class PinsController < ApplicationController
   # metodo para crear un nuevo pin
   def new
     @pin = Pin.new
+  end
+
+  def  show
+  end
+
+  def edit
   end
 
   # metodo para crear un nuevo pin
@@ -18,6 +26,18 @@ class PinsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    pin = Pin.find(params[:id])
+    pin.destroy
+    redirect_to root_path
+  end
+
+  private
+
+  def authenticate_user!
+    # code here
   end
 
   private
